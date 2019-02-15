@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>weex创建APP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <!-- 新 Bootstrap4 核心 CSS 文件 -->
+  <!-- <link rel="stylesheet" href="all.css"> -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+   
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+   
+  <!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+  <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+   
+  <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+.myHeader{
+  padding: 30px 0;
+}
+.p1020{padding: 10px 20px;}
+.pb100{padding-bottom: 100px;}
+.myTips{font-size: 12px;padding: 0 10px;}
+pre {
+  padding: 10px;
+  background: #fafafa;
+  font: 12px / 18px Consolas, monospace, serif;
+  color: #444;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  /* 1 */
+  overflow: auto;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+.highLight{
+  color: #dc3545!important;
+  padding: 0 10px;
+}
+</style>
+<body>
+<div class="container">
+      <div class="myHeader">
+        <div class="page-header">
+          <h1>weex创建APP <small>简略教程</small></h1>
+          <h5>这里只针对windows系统环境下，生成android的APP <small></small></h5>
+          <p>其他系统或者ios原理相同,可自行百度</p>
+          <p>需要配置太多的环境，很有可能某一步就不能通过，请不要灰心，针对出现的问题百度加以解决</p>
+        </div>
+      </div>
+    <div id="accordion">
+
+      <div class="card">
+        <div class="card-header">
+          <a class="card-link" data-toggle="collapse" href="#collapseOne">
+            第一步：安装weex(包括node,weex等)
+          </a>
+        </div>
+        <div id="collapseOne" class="collapse " data-parent="#accordion">
+          <div class="card-body">
+            <h3>1.下载node.js，配置环境变量<span class="myTips">(如果失败，请百度node安装)</span></h3>
+            
+            <div class="p1020">
+              <a href="https://nodejs.org/dist/v10.15.1/node-v10.15.1-x64.msi">node下载</a>
+              <div>傻瓜式一直点击下一步，安装完成后</div>
+              <div>在Windows环境下，请打开命令提示符(win+R,输出cmd回车)，然后输入<span class="highLight">node -v</span>，如果安装正常，你应该看到这样的版本信息：</div>
+              <pre><code class="undefined">C:\Users\Administrator&gt;node -v<br>v10.15.1</code></pre>
+              <div>说明node已经安装完成，npm(node的包管理工具)也顺带装好了</div>
+            </div>
+            <br><br>
+
+            <h3>2.直接使用 npm 来安装 weex-toolkit<span class="myTips">(如果失败，请百度weex安装)</span></h3>
+            
+            <div class="p1020">
+              <div>在当前命令提示符输入<span class="highLight">npm install -g weex-toolkit</span>,回车等待安装</div>
+              <div>完成后输入<span class="highLight">weex -v</span>可查看当前版本</div>
+              <pre><code class="undefined">C:\Users\Administrator&gt;weex -v<br>v1.3.11</code></pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+          第二步：安装 Java JDK,已安装的请跳过
+        </a>
+        </div>
+        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+          <div class="card-body">
+            <h3>1.在安装 Android Studio 之前，需安装好 Java JDK。<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html" target="_blank">点我跳转下载</a><span class="myTips">(如果失败，请百度Java JDK安装)</span></h3>
+            <p><img src="imgs/JAVA-JDK.png" class="img-thumbnail"></p>
+            <br>
+            <h3>2.下载之后，就是傻瓜式的安装了，一直下一步,<span class="highLight">复制你下面的安装路径</span>，安装完成后，配置环境变量会用到。</h3>
+            <p><img src="imgs/JAVA-src.png" class="img-thumbnail"></p>
+            <br>
+            <h3>3.环境变量的配置：<span class="highLight">右击我的电脑->属性->高级->环境变量->系统变量，单击[新建]</span>添加环境变量 </h3>
+            <p><img src="imgs/PC-0.png" class="img-thumbnail"></p>
+            <br>
+
+            <pre>
+              <div>3.1:新建JAVA_HOME</div>
+              <div>变量名<span class="highLight">JAVA_HOME</span></div>
+              <div>变量值 <span class="text-primary"> C:\Program Files\Java\jdk1.8.0_131</span><span class="highLight">你的jdk安装地址</span></div>
+            </pre>
+            <p><img src="imgs/PC-1.png" class="img-thumbnail"></p>
+            <br>
+
+            <pre>
+              <div>3.2:配置CLASSPATH</div>
+              <div>变量名<span class="highLight">CLASSPATH</span></div>
+              <div>变量值<span class="highLight">.;%JAVA_HOME%\lib</span></div>
+            </pre>
+            <p><img src="imgs/PC-2.png" class="img-thumbnail"></p>
+            <br>
+
+            <pre>
+              <div>3.3:配置PATH</div>
+              <div>变量名<span class="highLight">Path</span></div>
+              <div>变量值<span class="highLight">%JAVA_HOME%\bin</span></div>
+            </pre>
+            <p><img src="imgs/PC-3.png" class="img-thumbnail"></p>
+            <br>
+
+            <div class="p1020">
+              <p>由于安装环境比较麻烦,请打开命令提示符(win+R,输出cmd回车),依次输入验证</p>
+              <div>
+                <span class="highLight">java -version</span><br>
+                <span class="highLight">javac</span><br>
+                <span class="highLight">java</span><br>
+              </div>
+              <p><img src="imgs/cmd-1.png" class="img-thumbnail"></p>
+              <p><img src="imgs/cmd-2.png" class="img-thumbnail"></p>
+              <p><img src="imgs/cmd-3.png" class="img-thumbnail"></p>
+            </div>
+            <p>就这样java环境就搭建好了</p>
+          
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+          第三步：安装android所需要的环境(包括Android Studio,SDK等),已安装的请跳过
+        </a>
+        </div>
+        <div id="collapseThree" class="collapse " data-parent="#accordion">
+          <div class="card-body">
+            <p>好累啊，你自己百度吧<span class="myTips">(Android Studio安装)</span></p>
+            <br>
+            <br>
+            <br>
+            <p>良心发现，放点连接</p>
+            <p><a href="https://blog.csdn.net/weixin_42230936/article/details/80353479" target="_blank">Android Studio安装教程</a></p>
+            <h1>注意:按照教程安装完即可，记住SDK的安装位置，配置环境要用，不用新建项目</h1>
+            <p><img src="imgs/SDK-1.png" class="img-thumbnail"></p>
+            <p>安装完Android Studio后，<a href="https://blog.csdn.net/qq_33257584/article/details/80948322" target="_blank">SDK配置环境教程</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
+          第四步：创建项目,生成APK
+        </a>
+        </div>
+        <div id="collapseFour" class="collapse " data-parent="#accordion">
+          <div class="card-body">
+            <p>来到这里，所有的环境配置都已经完成，可以开始实干兴邦</p>
+            <div>在桌面新建文件夹"weexApp"，打开文件夹后,"shift+右键"，打开命令行窗口</div>
+            <p><img src="imgs/weex-1.png" class="img-thumbnail"></p>
+            <div>在命令提示符输入<span class="highLight">weex create awesome-project</span></div>
+            <p><img src="imgs/weex-2.png" class="img-thumbnail"></p>
+            <p>有输入的地方直接回车，然后下载，完成后就初始化成功"awesome-app"项目了</p>
+            <div>1.进入刚刚创建的文件夹</div>
+            <pre><code class="undefined">cd awesome-app</code></pre>
+            <div>2.安装依赖，可能需要几分钟</div>
+            <pre><code class="undefined">npm install</code></pre>
+            <div>3.安装应用模板</div>
+            <pre><code class="undefined">weex platform add android</code></pre>
+            <div>4.weex打包成js</div>
+            <pre><code class="undefined">npm run build</code></pre>
+            <div>5.打包成为签名的apk</div>
+            <pre><code class="undefined">npm run pack:android</code></pre>
+            <div>6.签名<small>（签名比较复杂，我往简单处理）</small></div>
+            <div>6.1 输入命令<span class="highLight">keytool -genkeypair -alias icesslkey -keyalg RSA -validity 3650 -keystore icekeystore.jks</span></div>
+            <div>6.2 提示输入两次密码,都输入<span class="highLight">android</span></div>
+            <div>6.3 其余信息可以直接回车,确认时输入<span class="highLight">y</span>再回车</div>
+            <div>6.4 弹出建议时输入<span class="highLight">keytool -importkeystore -srckeystore icekeystore.jks -destkeystore icekeystore.jks -deststoretype pkcs12</span></div>
+            <div>6.5 再次输入确认密码<span class="highLight">android</span></div>
+            <p><img src="imgs/create-1.png" class="img-thumbnail"></p>
+            <div>6.6 最后输入打包命令<span class="highLight">jarsigner -verbose -keystore icekeystore.jks -signedjar myApp.apk release/android/app-release-unsigned.apk icesslkey</span></div>
+            <div>第一次打包会下载比较多内容，耗时较长</div>
+            <p><img src="imgs/create-2.png" class="img-thumbnail"></p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1>至此，apk已经打包完毕</h1>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
+          结尾
+        </a>
+        </div>
+        <div id="collapseFive" class="collapse " data-parent="#accordion">
+          <div class="card-body">
+            <p>这里只做一个介绍，要想真正开发apk,涉及的每一个知识点都是得深入学习，提供传送门，共勉</p>
+            <p><a href="http://weex.incubator.apache.org/cn/guide/" target="_blank">weex</a></p>
+            <p><a href="http://www.runoob.com/android/android-tutorial.html" target="_blank">Android</a></p>
+            <p><a href="http://www.runoob.com/nodejs/nodejs-tutorial.html">node</a></p>
+          </div>
+      </div>
+
+    </div>
+    <div class="pb100"></div>
+  </div>
+</div>
+</body>
+<script>
+$(function(){
+})
+</script>
+</html>
